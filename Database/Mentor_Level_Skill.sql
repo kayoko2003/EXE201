@@ -11,4 +11,13 @@ create table dbo.Mentor_Level_Skill
 )
 go
 
-INSERT INTO Prog_DB.dbo.Mentor_Level_Skill (id, mentor_id, skill_level_id) VALUES (1, N'A002', 1);
+SET IDENTITY_INSERT FHub.dbo.Mentor_Level_Skill ON;
+
+IF NOT EXISTS (
+    SELECT 1 FROM FHub.dbo.Mentor_Level_Skill WHERE id = 1
+)
+    INSERT INTO FHub.dbo.Mentor_Level_Skill (id, mentor_id, skill_level_id)
+    VALUES (1, N'A002', 1);
+
+SET IDENTITY_INSERT FHub.dbo.Mentor_Level_Skill OFF;
+

@@ -15,6 +15,18 @@ create table dbo.Level_Skill
 )
 go
 
-INSERT INTO Prog_DB.dbo.Level_Skill (id, skill_id, level_id, description, status_id) VALUES (1, 1, 1, N'Basic level Java', 7);
-INSERT INTO Prog_DB.dbo.Level_Skill (id, skill_id, level_id, description, status_id) VALUES (2, 2, 1, N'Basic design principles', 7);
-INSERT INTO Prog_DB.dbo.Level_Skill (id, skill_id, level_id, description, status_id) VALUES (3, 3, 3, N'Expert in digital marketing strategies', 7);
+SET IDENTITY_INSERT FHub.dbo.Level_Skill ON;
+
+IF NOT EXISTS (SELECT 1 FROM FHub.dbo.Level_Skill WHERE id = 1)
+    INSERT INTO FHub.dbo.Level_Skill (id, skill_id, level_id, description, status_id)
+    VALUES (1, 1, 1, N'Basic level Java', 7);
+
+IF NOT EXISTS (SELECT 1 FROM FHub.dbo.Level_Skill WHERE id = 2)
+    INSERT INTO FHub.dbo.Level_Skill (id, skill_id, level_id, description, status_id)
+    VALUES (2, 2, 1, N'Basic design principles', 7);
+
+IF NOT EXISTS (SELECT 1 FROM FHub.dbo.Level_Skill WHERE id = 3)
+    INSERT INTO FHub.dbo.Level_Skill (id, skill_id, level_id, description, status_id)
+    VALUES (3, 3, 3, N'Expert in digital marketing strategies', 7);
+
+SET IDENTITY_INSERT FHub.dbo.Level_Skill OFF;

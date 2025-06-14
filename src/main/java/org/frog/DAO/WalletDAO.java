@@ -17,7 +17,7 @@ public class WalletDAO {
                     "      ,[balance]\n" +
                     "      ,[hold]\n" +
                     "\t  \n" +
-                    "  FROM [Prog_DB].[dbo].[Wallet] w join Account on Account.wallet_id = w.id\n" +
+                    "  FROM [FHub].[dbo].[Wallet] w join Account on Account.wallet_id = w.id\n" +
                     "  where Account.id = ?";
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, id);

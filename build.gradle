@@ -1,8 +1,8 @@
 plugins {
-    id 'org.springframework.boot' version '3.2.2'
+    id 'org.springframework.boot' version '3.2.5'
     id 'io.spring.dependency-management' version '1.1.4'
     id 'java'
-    id 'war'
+    id 'war'  // dùng plugin WAR
 }
 
 group = 'org'
@@ -21,41 +21,49 @@ tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }
 
+// Copy toàn bộ nội dung trong src/main/webapp vào META-INF/resources để JSP được nhúng vào JAR/WAR
+tasks.named('processResources') {
+    from('src/main/webapp') {
+        into 'META-INF/resources'
+    }
+}
+
+// Spring Boot tạo bootWar thay vì bootJar
+bootJar {
+    enabled = false
+}
+bootWar {
+    enabled = true
+}
+
 dependencies {
-    // Spring Boot Web (bao gồm Embedded Tomcat)
+    // Spring Boot Web (bao gồm embedded Tomcat)
     implementation 'org.springframework.boot:spring-boot-starter-web'
 
-    // Hỗ trợ JSP: Tomcat Embedded Jasper
+    // Hỗ trợ JSP: phải có Tomcat Embedded Jasper
     implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
 
-    // Hỗ trợ JSTL cho JSP
+    // JSTL cho JSP
     implementation 'org.glassfish.web:jakarta.servlet.jsp.jstl:2.0.0'
 
-    // Apache HttpClient và Fluent HC để xử lý HTTP requests
+    // Các thư viện khác bạn dùng trong project
     implementation 'org.apache.httpcomponents:httpclient:4.5.13'
     implementation 'org.apache.httpcomponents:fluent-hc:4.5.13'
-
-    // Gson cho xử lý JSON
     implementation 'com.google.code.gson:gson:2.10.1'
-
-    // Thư viện org.json
     implementation 'org.json:json:20240303'
-
-    // JavaMail API (dành cho gửi email)
     implementation 'com.sun.mail:javax.mail:1.6.2'
-
-    // JPA API và Hibernate cho ORM
     implementation 'javax.persistence:javax.persistence-api:2.2'
     implementation 'org.hibernate:hibernate-core:5.6.15.Final'
     implementation 'org.hibernate:hibernate-validator:6.1.0.Final'
-
-    // JDBC Driver cho SQL Server
+    runtimeOnly 'org.apache.tomcat.embed:tomcat-embed-jasper'
     implementation 'com.microsoft.sqlserver:mssql-jdbc:12.3.0.jre17-preview'
 
-    // Nếu cần Jakarta MVC API (chỉ compileOnly vì không triển khai)
-    compileOnly 'jakarta.mvc:jakarta.mvc-api:2.0.0'
+    // Nếu deploy WAR lên Tomcat bên ngoài (external Tomcat), bạn có thể để providedRuntime cho starter-tomcat:
+    // providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
 
-    // Dependencies cho test
+    // Lưu ý: không cần khai báo compileOnly servlet API hoặc JSP API, vì embedded Tomcat đã cung cấp.
+    // Nếu trước có các dòng compileOnly 'jakarta.servlet:...', 'jakarta.servlet.jsp-api', v.v., nên loại bỏ để tránh xung đột.
+
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.2'
 }

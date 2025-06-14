@@ -15,5 +15,18 @@ create table dbo.Wish_List
 )
 go
 
-INSERT INTO Prog_DB.dbo.Wish_List (id, mentor_id, mentee_id, status_id, date) VALUES (1, N'A002', N'A003', 12, N'2025-03-17 09:52:52.030');
-INSERT INTO Prog_DB.dbo.Wish_List (id, mentor_id, mentee_id, status_id, date) VALUES (2, N'A002', N'A003', 12, N'2025-03-17 09:52:52.030');
+SET IDENTITY_INSERT FHub.dbo.Wish_List ON;
+
+INSERT INTO FHub.dbo.Wish_List (id, mentor_id, mentee_id, status_id, date)
+SELECT 1, N'A002', N'A003', 12, N'2025-03-17 09:52:52.030'
+WHERE NOT EXISTS (
+    SELECT 1 FROM FHub.dbo.Wish_List WHERE id = 1
+);
+
+INSERT INTO FHub.dbo.Wish_List (id, mentor_id, mentee_id, status_id, date)
+SELECT 2, N'A002', N'A003', 12, N'2025-03-17 09:52:52.030'
+WHERE NOT EXISTS (
+    SELECT 1 FROM FHub.dbo.Wish_List WHERE id = 2
+);
+
+SET IDENTITY_INSERT FHub.dbo.Wish_List OFF;

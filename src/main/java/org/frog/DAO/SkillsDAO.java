@@ -53,7 +53,7 @@ public class SkillsDAO {
     public Map<String, Integer> getSkill() {
         Map<String, Integer> list = new LinkedHashMap<>();
         String sql = "SELECT s.id,s.name, count(*) as [count] \n" +
-                "FROM [Prog_DB].[dbo].[Booking] b\n" +
+                "FROM [FHub].[dbo].[Booking] b\n" +
                 "join [dbo].[Level_Skill] ls on b.level_skill_id = ls.id\n" +
                 "join [dbo].[Skill] s on ls.skill_id = s.id\n" +
                 "group by s.id,s.name\n" +

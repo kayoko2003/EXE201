@@ -7,4 +7,4 @@ create table dbo.Mentee
 )
 go
 
-INSERT INTO Prog_DB.dbo.Mentee (account_id) VALUES (N'A003');
+INSERT INTO FHub.dbo.Mentee (account_id) VALUES (N'A003');

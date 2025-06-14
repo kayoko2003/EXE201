@@ -521,7 +521,7 @@ public class AccountDAO {
         try {
             Connection connection = JDBC.getConnection();
             String sql = "SELECT count(*)\n" +
-                    "  FROM [Prog_DB].[dbo].[Mentee]";
+                    "  FROM [FHub].[dbo].[Mentee]";
             PreparedStatement preparedStatement = connection.prepareCall(sql);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
@@ -537,7 +537,7 @@ public class AccountDAO {
         try {
             Connection connection = JDBC.getConnection();
             String sql = "SELECT count(*)\n" +
-                    "  FROM [Prog_DB].[dbo].[Mentor]";
+                    "  FROM [FHub].[dbo].[Mentor]";
             PreparedStatement preparedStatement = connection.prepareCall(sql);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
@@ -553,7 +553,7 @@ public class AccountDAO {
         try {
             Connection connection = JDBC.getConnection();
             String sql = "SELECT count(*)\n" +
-                    "  FROM [Prog_DB].[dbo].Account\n" +
+                    "  FROM [FHub].[dbo].Account\n" +
                     "  where role_id = 4";
             PreparedStatement preparedStatement = connection.prepareCall(sql);
             ResultSet resultSet = preparedStatement.executeQuery();

@@ -11,4 +11,12 @@ create table dbo.Mentor_Schedule
 )
 go
 
-INSERT INTO Prog_DB.dbo.Mentor_Schedule (id, mentor_id, start_date, end_date, message) VALUES (1, N'A002', N'2025-03-01', N'2025-03-31', null);
+SET IDENTITY_INSERT FHub.dbo.Mentor_Schedule ON;
+
+IF NOT EXISTS (
+    SELECT 1 FROM FHub.dbo.Mentor_Schedule WHERE id = 1
+)
+    INSERT INTO FHub.dbo.Mentor_Schedule (id, mentor_id, start_date, end_date, message)
+    VALUES (1, N'A002', N'2025-03-01', N'2025-03-31', NULL);
+
+SET IDENTITY_INSERT FHub.dbo.Mentor_Schedule OFF;

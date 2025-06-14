@@ -23,5 +23,22 @@ create table dbo.Booking
 )
 go
 
-INSERT INTO Prog_DB.dbo.Booking (id, mentee_id, mentor_id, level_skill_id, status_id, create_date, from_date, to_date, total_slot, amount, description) VALUES (1, N'A003', N'A002', 1, 3, N'2025-03-01 03:08:28.960', N'2025-03-10', N'2025-03-10', 1, 100.00, null);
-INSERT INTO Prog_DB.dbo.Booking (id, mentee_id, mentor_id, level_skill_id, status_id, create_date, from_date, to_date, total_slot, amount, description) VALUES (2, N'A003', N'A002', 1, 3, N'2025-03-01 03:37:27.320', N'2025-03-10', N'2025-03-10', 1, 100.00, null);
+SET IDENTITY_INSERT FHub.dbo.Booking ON;
+
+IF NOT EXISTS (
+    SELECT 1 FROM FHub.dbo.Booking WHERE id = 1
+)
+    INSERT INTO FHub.dbo.Booking
+    (id, mentee_id, mentor_id, level_skill_id, status_id, create_date, from_date, to_date, total_slot, amount, description)
+    VALUES
+        (1, N'A003', N'A002', 1, 3, N'2025-03-01 03:08:28.960', N'2025-03-10', N'2025-03-10', 1, 100.00, NULL);
+
+IF NOT EXISTS (
+    SELECT 1 FROM FHub.dbo.Booking WHERE id = 2
+)
+    INSERT INTO FHub.dbo.Booking
+    (id, mentee_id, mentor_id, level_skill_id, status_id, create_date, from_date, to_date, total_slot, amount, description)
+    VALUES
+        (2, N'A003', N'A002', 1, 3, N'2025-03-01 03:37:27.320', N'2025-03-10', N'2025-03-10', 1, 100.00, NULL);
+
+SET IDENTITY_INSERT FHub.dbo.Booking OFF;

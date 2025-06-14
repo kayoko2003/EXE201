@@ -14,4 +14,4 @@ create table dbo.Mentor_CV_Logs
 )
 go
 
-INSERT INTO Prog_DB.dbo.Mentor_CV_Logs (account_id, profile_detail, education, experience, price, status_id) VALUES (N'A002', N'Experienced Java developer and mentor.', N'Master''s in Computer Science', N'5 years of industry experience', 100, 2);
+INSERT INTO FHub.dbo.Mentor_CV_Logs (account_id, profile_detail, education, experience, price, status_id) VALUES (N'A002', N'Experienced Java developer and mentor.', N'Master''s in Computer Science', N'5 years of industry experience', 100, 2);

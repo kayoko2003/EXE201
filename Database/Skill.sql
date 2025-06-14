@@ -10,6 +10,15 @@ create table dbo.Skill
 )
 go
 
-INSERT INTO Prog_DB.dbo.Skill (id, name, cate_id, src_icon) VALUES (1, N'Java Programming', 1, N'img/image_skill/java.png');
-INSERT INTO Prog_DB.dbo.Skill (id, name, cate_id, src_icon) VALUES (2, N'Graphic Design', 2, N'img/image_skill/graphic_design.jfif');
-INSERT INTO Prog_DB.dbo.Skill (id, name, cate_id, src_icon) VALUES (3, N'Digital Marketing', 3, N'img/image_skill/marketing.png');
+SET IDENTITY_INSERT FHub.dbo.Skill ON;
+
+INSERT INTO FHub.dbo.Skill (id, name, cate_id, src_icon)
+VALUES (1, N'Java Programming', 1, N'img/image_skill/java.png');
+
+INSERT INTO FHub.dbo.Skill (id, name, cate_id, src_icon)
+VALUES (2, N'Graphic Design', 2, N'img/image_skill/graphic_design.jfif');
+
+INSERT INTO FHub.dbo.Skill (id, name, cate_id, src_icon)
+VALUES (3, N'Digital Marketing', 3, N'img/image_skill/marketing.png');
+
+SET IDENTITY_INSERT FHub.dbo.Skill OFF;

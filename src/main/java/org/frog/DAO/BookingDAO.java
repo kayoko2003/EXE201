@@ -41,7 +41,7 @@ public class BookingDAO {
 
             Connection connection = JDBC.getConnection();
             String sql = "SELECT Count(*)\n" +
-                    "FROM [Prog_DB].[dbo].[Booking]\n" +
+                    "FROM [FHub].[dbo].[Booking]\n" +
                     "where status_id = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1, status);
