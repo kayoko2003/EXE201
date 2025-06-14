@@ -252,6 +252,18 @@
     }
 
 </script>
+
+<script async
+        src="https://srslo4qr5ntapjmsholm5qow.agents.do-ai.run/static/chatbot/widget.js"
+        data-agent-id="e3614602-4973-11f0-bf8f-4e013e2ddde4"
+        data-chatbot-id="UCC3pyDQaBymFyvQUhXYpSiUXG_s8ORg"
+        data-name="FHub Chatbot"
+        data-primary-color="#031B4E"
+        data-secondary-color="#E5E8ED"
+        data-button-background-color="#0061EB"
+        data-starting-message="Hello! How can I help you today?"
+        data-logo="/static/chatbot/icons/default-agent.svg">
+</script>
 <!-- MDB -->
 <script
         type="text/javascript"
